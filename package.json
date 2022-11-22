@@ -1,0 +1,26 @@
+{
+	"name": "nexu-challenge",
+	"version": "1.0.0",
+	"description": "API Rest to read CSV files",
+	"scripts": {
+		"dev": "nodemon ./src/server.js"
+	},
+	"keywords": [
+		"challenge",
+		"test",
+		"api rest",
+		"CSV"
+	],
+	"license": "MIT",
+	"author": "Jose Francisco Alvarez Valdez<alvaresvlades89@gmail.com>",
+	"main": "server.js",
+	"private": true,
+	"dependencies": {
+		"body-parser": "^1.20.0",
+		"cors": "^2.8.5",
+		"express": "^4.18.1",
+		"express-fileupload": "^1.4.0",
+		"helmet": "^6.0.0",
+		"mongoose": "^6.6.1"
+	}
+}

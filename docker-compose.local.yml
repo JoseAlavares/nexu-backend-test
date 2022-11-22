@@ -1,0 +1,44 @@
+version: '3.8'
+services:
+
+  api-nexu:
+    image: jalvarez/api-nexu:local
+    container_name: api-nexu
+    restart: unless-stopped
+    environment:
+    - MONGO_DB_HOST=db-nexu
+    - MONGO_DB_NAME=nexu
+    - MONGO_DB_USER=root
+    - MONGO_DB_PASSWORD=admin
+    - PORT=3000
+    build:
+      context: ./
+      dockerfile: ./Dockerfile.local
+    ports:
+    - 5001:3000
+    volumes:
+    - ./src:/home/node/app/src
+    depends_on:
+    - db-nexu
+    networks:
+    - nexu
+
+  db-nexu:
+    image: mongo:4.1.8-xenial
+    environment:
+    # - MONGO_INITDB_ROOT_USERNAME=root
+    # - MONGO_INITDB_ROOT_PASSWORD=admin
+    - MONGO_INITDB_DATABASE=nexu
+    container_name: db-nexu
+    restart: unless-stopped
+    # build:
+    #   context: ./
+    #   dockerfile: ./Dockerfile.dev
+    ports:
+    - 27020:27017
+    networks:
+    - nexu
+
+networks:
+  nexu:
+    driver: bridge
