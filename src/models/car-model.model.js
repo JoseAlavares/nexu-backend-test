@@ -5,7 +5,7 @@ const mongoose = require('mongoose')
 const SchemaCarModel = new mongoose.Schema({
     id: {
         type: Number,
-        required: true
+        required: false
     },
     name: {
         type: String,
